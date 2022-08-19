@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Models.Model.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Posts Existentes</h1>
+<hr/>
+<div>
+    <form asp-controller="Post" asp-action="Index">
+        <label>Utilice palabras completas para obtener mejores resultados</label>
+        <div>
+            <input type="text" size="15" maxlength="30" name="text" placeholder="texto a filtrar">
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="submit" value="Filtrar" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+</br>
+<div>
+    <form asp-controller="Post" asp-action="Recargar">
+        <div class="form-group">
+            <input type="submit" value="Lista Completa" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+}
+</div>

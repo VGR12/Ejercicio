@@ -1,0 +1,58 @@
+﻿@model Models.Model.Address
+
+@{
+    ViewData["Title"] = "Details";
+    Models.Model.Geo geo=ViewBag.Geo;
+}
+
+<h1>Details Address</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Suite)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Suite)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h3>Details of Geo</h3>
+    <hr />
+    <dl>
+        <dd class = "col-sm-2">
+            @Html.DisplayName("Lat:  ")@geo.Lat
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayName("Lng:  ")@geo.lng
+        </dd>
+    </dl>
+
+</div>
+
+
+<div>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    <a asp-action="GetUsers" asp-controller="User">Back to List</a>
+</div>

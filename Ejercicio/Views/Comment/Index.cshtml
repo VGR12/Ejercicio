@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Models.Model.Comment>
+
+   <style type="text/css"> 
+   .transformacion { text-transform: capitalize;}   
+   </style> 
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Comentarios</h1>
+<hr/>
+<div>
+    <form asp-controller="Comment" asp-action="Index">
+        <div>
+            <input type="number" size="15" maxlength="30" name="IdPost" placeholder="IdPost">
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="submit" value="Filtrar" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <p class="transformacion">@Html.DisplayFor(modelItem => item.Body)</p>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
